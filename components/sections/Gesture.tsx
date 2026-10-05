@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { ArrowRightIcon } from "@/components/ui/icons";
 import SectionMarker from "./SectionMarker";
 import LineHeading from "@/components/motion/LineHeading";
+import { contact } from "@/lib/contact";
 import styles from "@/app/page.module.css";
 
 export default function Gesture() {
@@ -12,7 +14,7 @@ export default function Gesture() {
         <p data-story-reveal="soft">Some feelings deserve more than a simple bouquet.</p>
         <p data-story-reveal="soft" data-story-delay="0.1">Add a personal note, choose the flowers, and let the gesture arrive with intention</p>
       </div>
-      <a className={styles.gestureLink} href="mailto:info@poetsflowers.buxdev.com?subject=Tell%20us%20the%20moment" data-story-reveal="soft" data-story-delay="0.25" data-story-gesture-cta>TELL US THE MOMENT <span aria-hidden="true">→</span></a>
+      <a className={styles.gestureLink} href={contact.whatsapp} target="_blank" rel="noopener noreferrer" data-story-reveal="soft" data-story-delay="0.25" data-story-gesture-cta>TELL US THE MOMENT <span aria-hidden="true"><ArrowRightIcon size="1em" /></span></a>
       <p className={styles.gestureNote} data-story-reveal="fade" data-story-delay="0.3">We’ll help you choose the right flowers.</p>
       <div className={styles.gesturePhoto} data-story-reveal="image" data-story-photo data-story-trigger="body" data-story-delay="0.22"><Image src="/assets/collection-two.jpeg" alt="Pink flower bouquet ready to give" fill sizes="(max-width: 767px) 100vw, 55vw" /></div>
       <ol className={styles.gestureSteps} data-story-steps>

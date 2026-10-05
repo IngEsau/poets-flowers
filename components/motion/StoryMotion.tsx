@@ -98,7 +98,6 @@ function mountStory(root: HTMLElement, mobile: boolean, played: WeakSet<HTMLElem
     }));
     query("[data-story-hero-intro]").forEach((element) => reveal(element, { immediate: true, distance: mobile ? 10 : 18, delay: 0.4 }));
     query("[data-story-hero-cta]").forEach((element) => reveal(element, { immediate: true, distance: 10, delay: 0.58 }));
-    query("[data-story-hero-number]").forEach((element) => reveal(element, { kind: "fade", immediate: true, delay: 0.2, duration: tokens.duration.fast }));
 
     query("[data-story-heading]").forEach((heading) => {
       Array.from(heading.querySelectorAll<HTMLElement>("[data-story-line]")).forEach((line, index) => reveal(line, {
@@ -126,6 +125,10 @@ function mountStory(root: HTMLElement, mobile: boolean, played: WeakSet<HTMLElem
     });
 
     const hero = root.querySelector<HTMLElement>("[data-story-hero]");
+    if (hero) {
+      const chapter = hero.querySelector<HTMLElement>("[data-story-hero-number]");
+      if (chapter) linked(chapter, { opacity: [0.72, 1, 1] }, hero, { offset: ["start start", "end start"] }, [0, 0.16, 1]);
+    }
     if (hero && !mobile) {
       const offsets = { offset: ["start start", "end start"] } satisfies NonNullable<Parameters<typeof scroll>[1]>;
       const image = hero.querySelector<HTMLElement>("[data-story-hero-image]");
@@ -171,13 +174,16 @@ function mountStory(root: HTMLElement, mobile: boolean, played: WeakSet<HTMLElem
     if (quote) {
       const words = Array.from(quote.querySelectorAll<HTMLElement>("[data-story-word]"));
       const author = quote.querySelector<HTMLElement>("[data-story-author]");
+      const wordStagger = 0.085;
+      const wordDuration = 0.15;
       const sequence: AnimationSequence = words.map((word, index) => {
         remember(word);
-        return [word, { opacity: [0.2, 1] }, { at: index * 0.085, duration: 0.15, ease: "linear" }];
+        return [word, { opacity: [0.2, 1] }, { at: index * wordStagger, duration: wordDuration, ease: "linear" }];
       });
       if (author) {
         remember(author);
-        sequence.push([author, { opacity: [0, 1], transform: ["translateY(6px)", "translateY(0px)"] }, { at: 0.78, duration: 0.22, ease: tokens.ease }]);
+        const phraseDuration = Math.max(0, words.length - 1) * wordStagger + wordDuration;
+        sequence.push([author, { opacity: [0.2, 1] }, { at: 0, duration: phraseDuration, ease: "linear" }]);
       }
       const animation = animate(sequence, { duration: 1 });
       cleanups.push(() => animation.cancel());

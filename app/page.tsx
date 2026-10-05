@@ -6,6 +6,7 @@ import Quote from "@/components/sections/Quote";
 import ContactCTA from "@/components/sections/ContactCTA";
 import Footer from "@/components/layout/Footer";
 import StoryMotion from "@/components/motion/StoryMotion";
+import FloatingActions from "@/components/layout/FloatingActions";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
       <Quote />
       <ContactCTA />
       <Footer />
+      <FloatingActions />
       <StoryMotion />
     </main>
   );

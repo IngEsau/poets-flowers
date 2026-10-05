@@ -3,6 +3,9 @@
   --ivory: #f4ebdd;
   --ink: #2b160f;
   --burgundy: #930028;
+  --divider: linear-gradient(90deg, #2b160f 40%, rgb(255 255 255 / 0) 100%);
+  --divider-vertical: linear-gradient(180deg, rgb(255 255 255 / 0) 0%, #2b160f 50%, rgb(255 255 255 / 0) 100%);
+  --divider-centered: linear-gradient(90deg, rgb(255 255 255 / 0) 0%, #2b160f 50%, rgb(255 255 255 / 0) 100%);
   --page-margin: clamp(24px, 6.25vw, 120px);
   --u: calc(100vw / 1920);
 }
@@ -12,7 +15,8 @@ html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--font-inter), Arial, sans-serif; }
 button, a { -webkit-tap-highlight-color: transparent; }
 a { color: inherit; }
-a:focus-visible { outline: 3px solid currentColor; outline-offset: 6px; }
+a:focus-visible, summary:focus-visible, button:focus-visible { outline: 3px solid currentColor; outline-offset: 6px; }
+svg { flex-shrink: 0; vertical-align: -.15em; }
 ::selection { background: var(--burgundy); color: var(--ivory); }
 
 @media (min-width: 1920px) { :root { --u: 1px; } }

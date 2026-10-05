@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArrowRightIcon } from "@/components/ui/icons";
 import SectionMarker from "./SectionMarker";
 import LineHeading from "@/components/motion/LineHeading";
 import styles from "@/app/page.module.css";
@@ -19,7 +20,7 @@ export default function Meaning() {
         <div className={styles.meaningPhotoTop} data-story-reveal="image" data-story-photo data-story-trigger="body" data-story-delay="0.28"><Image src="/assets/meaning-lily.jpeg" alt="Pink lilies in bloom" fill sizes="(max-width: 767px) 72vw, 35vw" /></div>
         <div className={styles.meaningPhotoBottom} data-story-reveal="image" data-story-photo data-story-trigger="body" data-story-direction="horizontal" data-story-delay="0.42"><Image src="/assets/meaning-roses.jpeg" alt="Pink rose bouquet" fill sizes="(max-width: 767px) 58vw, 25vw" /></div>
       </div>
-      <a className={styles.meaningLink} href="#flowers" data-story-reveal="soft" data-story-delay="0.15">Find flowers for the moment <span aria-hidden="true">→</span></a>
+      <a className={styles.meaningLink} href="#flowers" data-story-reveal="soft" data-story-delay="0.15">Find flowers for the moment <span aria-hidden="true"><ArrowRightIcon size="1em" /></span></a>
       <p className={styles.meaningAside} data-story-reveal="soft"><em>At Poet&apos;s Flowers,<br />every arrangement begins with an</em><br /><strong>intention</strong></p>
     </section>
   );
