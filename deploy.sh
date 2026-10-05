@@ -11,7 +11,7 @@ fi
 
 if [[ "$mode" == "deploy" ]]; then
   if [[ ! -f "$project_dir/.env" ]]; then
-    printf 'Falta .env. Copia .env.example a .env y completa FTP_PASSWORD.\n' >&2
+    printf 'Falta .env. Copia .env.example a .env y completa FTP_PASS.\n' >&2
     exit 1
   fi
 
@@ -19,17 +19,16 @@ if [[ "$mode" == "deploy" ]]; then
   # shellcheck source=/dev/null
   source "$project_dir/.env"
 
-  for variable in FTP_HOST FTP_PORT FTP_USER FTP_PASSWORD FTP_REMOTE_DIR; do
+  for variable in FTP_HOST FTP_USER FTP_PASS FTP_DIR; do
     if [[ -z "${!variable:-}" ]]; then
       printf 'Falta %s en .env; se cancela el deploy.\n' "$variable" >&2
       exit 1
     fi
   done
 
-  if [[ ! "$FTP_HOST" =~ ^[A-Za-z0-9.-]+$ ||
-        ! "$FTP_PORT" =~ ^[0-9]+$ ||
+  if [[ ! "$FTP_HOST" =~ ^ftp://[A-Za-z0-9.-]+:[0-9]+$ ||
         ! "$FTP_USER" =~ ^[A-Za-z0-9@._+-]+$ ||
-        ! "$FTP_REMOTE_DIR" =~ ^/[A-Za-z0-9._/-]+$ ]]; then
+        ! "$FTP_DIR" =~ ^/[A-Za-z0-9._/-]*$ ]]; then
     printf 'Los datos de conexión en .env tienen un formato no válido.\n' >&2
     exit 1
   fi
@@ -55,15 +54,15 @@ if [[ "$mode" == "--build-only" ]]; then
 fi
 
 printf 'Publicando out/ en %s por FTPS explícito...\n' "$FTP_HOST"
-LFTP_PASSWORD="$FTP_PASSWORD" lftp --norc -f /dev/stdin <<EOF
+LFTP_PASSWORD="$FTP_PASS" lftp --norc -f /dev/stdin <<EOF
 set cmd:fail-exit yes
 set ftp:ssl-force yes
 set ftp:ssl-protect-data yes
 set ssl:verify-certificate yes
 set net:max-retries 2
 set net:timeout 30
-open --env-password --user "$FTP_USER" -p "$FTP_PORT" "ftp://$FTP_HOST"
-cd "$FTP_REMOTE_DIR"
+open --env-password --user "$FTP_USER" "$FTP_HOST"
+cd "$FTP_DIR"
 mirror --reverse --verbose --no-perms "$project_dir/out" .
 bye
 EOF
