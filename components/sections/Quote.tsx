@@ -16,9 +16,9 @@ export default function Quote() {
           <Image src="/assets/quote-grid-horizontal-3.svg" alt="" width={248} height={1920} />
         </div>
         <Image src="/assets/watercolor-quote.png" alt="" width={1122} height={1402} className={styles.quoteFlower} />
-        <blockquote>
-          <p>“Give flowers while they can<br className={styles.desktopBreak} /> still be felt.”</p>
-          <footer>— J. Aguilar</footer>
+        <blockquote data-story-quote>
+          <p><span data-story-word>“Give</span>{" "}<span data-story-word>flowers</span>{" "}<span data-story-word>while</span>{" "}<span data-story-word>they</span>{" "}<span data-story-word>can</span><br className={styles.desktopBreak} />{" "}<span data-story-word>still</span>{" "}<span data-story-word>be</span>{" "}<span data-story-word>felt.”</span></p>
+          <footer data-story-author>— J. Aguilar</footer>
         </blockquote>
       </div>
     </section>

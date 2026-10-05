@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import "@/styles/motion.css";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],

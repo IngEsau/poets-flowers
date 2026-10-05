@@ -5,6 +5,7 @@ import Gesture from "@/components/sections/Gesture";
 import Quote from "@/components/sections/Quote";
 import ContactCTA from "@/components/sections/ContactCTA";
 import Footer from "@/components/layout/Footer";
+import StoryMotion from "@/components/motion/StoryMotion";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <Quote />
       <ContactCTA />
       <Footer />
+      <StoryMotion />
     </main>
   );
 }

@@ -7,15 +7,15 @@
 .hero { height: calc(1080 * var(--u)); overflow: hidden; color: var(--ivory); background: #6d302d; }
 .heroImage { object-position: center; }
 .heroContent { position: absolute; inset: 0; z-index: 1; }
-.heroTitle { position: absolute; top: calc(331 * var(--u)); left: calc(120 * var(--u)); font: 700 calc(240 * var(--u))/1.21 var(--font-cormorant), Georgia, serif; letter-spacing: -.035em; }
+.heroTitle { position: absolute; top: calc(160 * var(--u)); left: calc(120 * var(--u)); font: 700 calc(240 * var(--u))/1.21 var(--font-cormorant), Georgia, serif; letter-spacing: -.035em; }
 .heroTitle span { display: block; white-space: nowrap; }
-.heroTitle span + span { position: absolute; top: calc(323 * var(--u)); left: calc(568 * var(--u)); }
-.heroIntro { position: absolute; top: calc(718 * var(--u)); left: calc(120 * var(--u)); font: 400 calc(25 * var(--u))/1.2 var(--font-inter), Arial, sans-serif; }
+.heroTitle span + span { position: absolute; top: calc(280 * var(--u)); left: calc(558 * var(--u)); }
+.heroIntro { position: absolute; top: calc(520 * var(--u)); left: calc(120 * var(--u)); font: 400 calc(25 * var(--u))/1.2 var(--font-inter), Arial, sans-serif; }
 .heroRule { display: block; width: calc(80 * var(--u)); height: 2px; margin-bottom: calc(21 * var(--u)); background: currentColor; }
-.heroLink { position: absolute; top: calc(911 * var(--u)); left: calc(120 * var(--u)); font-size: calc(20 * var(--u)); font-weight: 500; line-height: 1.2; letter-spacing: .04em; text-decoration: none; text-transform: uppercase; }
+.heroLink { position: absolute; top: calc(710 * var(--u)); left: calc(120 * var(--u)); font-size: calc(20 * var(--u)); font-weight: 500; line-height: 1.2; letter-spacing: .04em; text-decoration: none; text-transform: uppercase; }
 .heroLink span { margin-left: .25em; }
 .heroLink:hover, .meaningLink:hover, .gestureLink:hover { text-decoration: underline; text-underline-offset: .2em; }
-.heroNumberDesktop { position: absolute; right: calc(113 * var(--u)); bottom: calc(64 * var(--u)); z-index: 1; color: #fff; font-size: calc(32 * var(--u)); font-weight: 600; }
+.heroNumberDesktop { position: absolute; right: calc(113 * var(--u)); top: calc(620 * var(--u)); z-index: 1; color: #fff; font-size: calc(32 * var(--u)); font-weight: 600; }
 .heroNumber { display: none; }
 
 /* Shared section chapter label */
@@ -131,12 +131,12 @@
 
 @media (max-width: 1100px) {
   .hero { height: min(760px, 78vw); min-height: 620px; }
-  .heroTitle { top: 30%; left: 6%; font-size: clamp(100px, 13vw, 150px); }
-  .heroTitle span + span { top: .9em; left: 29vw; }
-  .heroIntro { top: 69%; left: 6%; font-size: clamp(18px, 2vw, 24px); }
+  .heroTitle { top: 18%; left: 6%; font-size: clamp(100px, 13vw, 150px); }
+  .heroTitle span + span { top: .9em; left: 32vw; }
+  .heroIntro { top: 58%; left: 6%; font-size: clamp(18px, 2vw, 24px); }
   .heroRule { width: 64px; margin-bottom: 20px; }
-  .heroLink { top: 88%; left: 6%; font-size: 18px; }
-  .heroNumberDesktop { right: 6%; bottom: 5%; font-size: 22px; }
+  .heroLink { top: 78%; left: 6%; font-size: 18px; }
+  .heroNumberDesktop { top: calc(18% + 1.45em); bottom: auto; right: 6%; font-size: 22px; }
   .sectionMarker { position: relative; top: auto; left: auto; gap: 20px; font-size: 20px; }
   .markerRule { width: clamp(60px, 21vw, 250px); }
   .meaning, .collection, .gesture { height: auto; padding: 72px 6% 100px; }
@@ -193,16 +193,16 @@
 }
 
 @media (max-width: 767px) {
-  .hero { height: 100svh; min-height: 680px; max-height: 900px; }
+  .hero { height: 100svh; min-height: 600px; max-height: 900px; }
   .heroImage { object-position: 49% center; }
-  .heroContent { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 20vh 22px 11vh; text-align: center; }
+  .heroContent { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 10vh 22px 6vh; text-align: center; }
   .heroNumber { display: block; order: 0; font-size: 24px; font-weight: 600; }
-  .heroTitle { position: relative; top: auto; left: auto; order: 1; width: 100%; margin-top: 76px !important; font-size: clamp(62px, 16vw, 100px); line-height: .91; letter-spacing: -.035em; }
+  .heroTitle { position: relative; top: auto; left: auto; order: 1; width: 100%; margin-top: 38px !important; font-size: clamp(62px, 16vw, 100px); line-height: .91; letter-spacing: -.035em; }
   .heroTitle span + span { position: static; }
-  .heroIntro { position: relative; top: auto; left: auto; order: 2; margin-top: 70px; font-size: 17px; font-weight: 500; }
-  .heroRule { width: 160px; margin: 0 auto 30px; }
-  .heroLink { position: relative; top: auto; left: auto; order: 3; max-width: 240px; margin-top: 65px; font-size: 19px; line-height: 1.2; }
-  .heroLink span { display: block; margin-top: 15px; transform: rotate(90deg); }
+  .heroIntro { position: relative; top: auto; left: auto; order: 2; margin-top: 36px; font-size: 17px; font-weight: 500; }
+  .heroRule { width: 160px; margin: 0 auto 24px; }
+  .heroLink { position: relative; top: auto; left: auto; order: 3; max-width: 240px; margin-top: 36px; font-size: 19px; line-height: 1.2; }
+  .heroLink span { display: block; margin-top: 12px; transform: rotate(90deg); }
   .heroNumberDesktop { display: none; }
   .sectionMarker { gap: 12px; font-size: 14px; }
   .markerRule { flex: 1; width: auto; max-width: 120px; }
