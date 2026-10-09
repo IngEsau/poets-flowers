@@ -111,7 +111,20 @@
 
 /* Quote */
 .quote { height: auto; }
-.quotePanel { position: relative; height: calc(1080 * var(--u)); overflow: hidden; box-shadow: 2px 2px 16px rgb(0 0 0 / 8%); }
+.quotePanel { position: relative; height: calc(1080 * var(--u)); overflow: hidden; background: var(--cream); box-shadow: 2px 2px 16px rgb(0 0 0 / 8%); }
+.quoteStage { position: relative; isolation: isolate; }
+.quoteSheet { position: relative; }
+.quoteCrumple { position: absolute !important; inset: 0; z-index: 2; }
+.quoteCrumple :global(.paper-crumple-canvas) { opacity: 0; }
+.quoteCrumple :global(.paper-crumple-fallback), .quoteCrumple :global(.paper-crumple-focus) { display: none; }
+.quoteCrumple :global(.paper-crumple-hit:not([data-pointer="true"]):focus-visible) { outline: 1px solid var(--burgundy) !important; outline-offset: -8px; }
+.quoteStage[data-paper-active="true"] .quoteSheet { opacity: 0; }
+.quoteStage[data-paper-active="true"] .quoteCrumple :global(.paper-crumple-canvas) { opacity: 1; }
+.quotePaperHint { position: absolute; bottom: 28px; inset-inline: 24px; text-align: center; font-size: 12px; letter-spacing: .04em; opacity: 0; pointer-events: none; }
+.quoteStage:has(.quoteCrumple[data-status="ready"]) .quotePaperHint { opacity: .6; }
+@media (pointer: coarse) {
+  .quoteCrumple :global(.paper-crumple-hit) { touch-action: pan-y; }
+}
 .quoteGrid { position: absolute; inset: 0; opacity: .1; pointer-events: none; }
 .quoteGrid img { position: absolute; object-fit: fill; }
 .quoteGrid img:nth-child(1), .quoteGrid img:nth-child(2), .quoteGrid img:nth-child(3), .quoteGrid img:nth-child(4) { top: calc(-17 * var(--u)); width: calc(368 * var(--u)); height: calc(1291 * var(--u)); }
