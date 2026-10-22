@@ -162,6 +162,9 @@
 .footer .languageSwitch a[aria-current="page"] { background: var(--burgundy); color: var(--ivory); }
 .footer .languageSwitch a:hover { background: rgb(147 0 40 / .06); }
 .footer .languageSwitch a[aria-current="page"]:hover { background: var(--burgundy); }
+.footerCredit { margin-top: 40px; color: rgb(43 22 15 / .7); font-size: 12px; line-height: 1.5; }
+.footerCredit a { text-decoration: none; }
+.footerCredit a:hover { text-decoration: underline; text-underline-offset: .3em; }
 
 .floatingActions { position: fixed; z-index: 20; right: max(clamp(44px, 5vw, 112px), env(safe-area-inset-right)); bottom: max(clamp(64px, 10vh, 120px), env(safe-area-inset-bottom)); width: 76px; height: 144px; overflow: hidden; border: 1px solid rgb(147 0 40 / .2); border-radius: 40px; background: var(--cream); box-shadow: 0 2px 10px rgb(43 22 15 / .09); visibility: hidden; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 220ms ease, transform 220ms ease, visibility 220ms; }
 .floatingActions[data-visible="true"] { visibility: visible; opacity: 1; transform: translateY(0); pointer-events: auto; }

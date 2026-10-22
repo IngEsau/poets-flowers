@@ -14,6 +14,7 @@ export default function Footer({ locale }: { locale: Locale }) {
         <a className={styles.footerEmail} href={contact.email}><EnvelopeSimpleIcon size="1em" aria-hidden="true" />info@poetsflowers.buxdev.com</a>
         <small>© 2026</small>
         <LanguageSwitch locale={locale} label={t.language.label} placement="footer" />
+        <p className={styles.footerCredit}><a href="https://buxdev.com/">{t.footer.developmentCredit}</a></p>
       </div>
     </footer>
   );

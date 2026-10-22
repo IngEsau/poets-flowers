@@ -63,7 +63,7 @@ const en = {
     unavailable: "Interactive paper unavailable. Showing the original image.",
   },
   contact: { title: ["WHO’S", "IT FOR?"], channels: "Contact channels" },
-  footer: { navigation: "Footer navigation", home: "HOME", flowers: "FLOWERS", contact: "CONTACT" },
+  footer: { navigation: "Footer navigation", home: "HOME", flowers: "FLOWERS", contact: "CONTACT", developmentCredit: "Developed by Buxdev" },
   actions: { label: "Quick actions", backToTop: "Back to top", whatsapp: "Talk to us on WhatsApp" },
 };
 
@@ -130,7 +130,7 @@ const es: Dictionary = {
     unavailable: "El papel interactivo no está disponible. Se muestra la imagen original.",
   },
   contact: { title: ["¿PARA", "QUIÉN?"], channels: "Medios de contacto" },
-  footer: { navigation: "Navegación del pie de página", home: "INICIO", flowers: "FLORES", contact: "CONTACTO" },
+  footer: { navigation: "Navegación del pie de página", home: "INICIO", flowers: "FLORES", contact: "CONTACTO", developmentCredit: "Desarrollado por Buxdev" },
   actions: { label: "Acciones rápidas", backToTop: "Volver al inicio", whatsapp: "Escríbenos por WhatsApp" },
 };
 
