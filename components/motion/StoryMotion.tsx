@@ -171,23 +171,27 @@ function mountStory(root: HTMLElement, mobile: boolean, played: WeakSet<HTMLElem
     }
 
     const quote = root.querySelector<HTMLElement>("[data-story-quote]");
-    if (quote) {
+    if (quote && !played.has(quote)) {
       const words = Array.from(quote.querySelectorAll<HTMLElement>("[data-story-word]"));
       const author = quote.querySelector<HTMLElement>("[data-story-author]");
-      const wordStagger = 0.085;
-      const wordDuration = 0.15;
+      const wordStagger = 0.03;
+      const wordDuration = 0.12;
       const sequence: AnimationSequence = words.map((word, index) => {
         remember(word);
-        return [word, { opacity: [0.2, 1] }, { at: index * wordStagger, duration: wordDuration, ease: "linear" }];
+        word.style.opacity = "0.55";
+        return [word, { opacity: [0.55, 1] }, { at: index * wordStagger, duration: wordDuration, ease: "linear" }];
       });
       if (author) {
         remember(author);
+        author.style.opacity = "0.55";
         const phraseDuration = Math.max(0, words.length - 1) * wordStagger + wordDuration;
-        sequence.push([author, { opacity: [0.2, 1] }, { at: 0, duration: phraseDuration, ease: "linear" }]);
+        sequence.push([author, { opacity: [0.55, 1] }, { at: 0, duration: phraseDuration, ease: "linear" }]);
       }
-      const animation = animate(sequence, { duration: 1 });
-      cleanups.push(() => animation.cancel());
-      cleanups.push(scroll(animation, { target: quote, offset: ["start 80%", "end 40%"] }));
+      // Complete the short entrance even if the reader stops scrolling here.
+      cleanups.push(inView(quote, () => {
+        const animation = animate(sequence, { onComplete: () => { played.add(quote); } });
+        cleanups.push(() => animation.cancel());
+      }, { margin: "0px 0px -8% 0px", amount: "some" }));
     }
 
     const onFocus = (event: FocusEvent) => {
