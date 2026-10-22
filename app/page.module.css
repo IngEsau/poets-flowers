@@ -74,22 +74,20 @@
 .collectionGrid[data-occasion="thank-you"] { grid-template-columns: 1.3fr .85fr .85fr; grid-template-rows: 1fr 1fr; grid-template-areas: "a b b" "a c d"; }
 .collectionGrid[data-occasion="celebrate"] { grid-template-columns: 1fr 1fr 1.2fr; grid-template-rows: 1fr 1fr; grid-template-areas: "a a b" "c d b"; }
 .collectionGrid[data-occasion="for-you"] { grid-template-columns: 1fr 1.2fr .9fr; grid-template-rows: 1fr 1fr; grid-template-areas: "a b c" "a b d"; }
-.collectionCard { position: relative; min-width: 0; min-height: 0; overflow: hidden; background: #f3e6d7; }
+.collectionCard { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
 .collectionCard:nth-child(1) { grid-area: a; }
 .collectionCard:nth-child(2) { grid-area: b; }
 .collectionCard:nth-child(3) { grid-area: c; }
 .collectionCard:nth-child(4) { grid-area: d; }
+.productVisual { position: relative; display: block; flex: 1; min-height: 0; overflow: hidden; background: #f3e6d7; }
+.productVisual:focus-visible { outline-offset: -6px; }
 .collectionCard img { object-position: center; }
-.productSummary { position: absolute; inset: 0; display: block; cursor: pointer; list-style: none; color: var(--ivory); }
-.productSummary::-webkit-details-marker { display: none; }
-.productSummary:focus-visible { outline-offset: -6px; }
-.collectionProductInfo { position: absolute; z-index: 2; right: calc(36 * var(--u)); bottom: calc(50 * var(--u)); left: calc(56 * var(--u)); display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; color: #fff; font-size: calc(24 * var(--u)); line-height: 1.21; }
-.productName, .productDescription { display: block; }
-.productName { display: flex; align-items: center; gap: .35em; font-weight: 500; }
-.productDescription { margin-top: .25em; }
-.collectionProductInfo .collectionPrice { font-size: calc(32 * var(--u)); font-weight: 500; white-space: nowrap; }
-.productInquiry { position: absolute; z-index: 3; right: 24px; bottom: 18px; left: 24px; width: fit-content; color: #fff; font-size: clamp(13px, 1.1vw, 20px); text-decoration: underline; text-underline-offset: .2em; }
-.collectionGrid details[open] .collectionProductInfo { bottom: 62px; }
+.collectionProductInfo { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 16px; padding-top: 24px; }
+.productName { font-size: clamp(14px, 1vw, 19px); font-weight: 500; line-height: 1.5; letter-spacing: .04em; }
+.collectionPrice { font-size: clamp(15px, 1.1vw, 21px); line-height: 1.5; white-space: nowrap; }
+.collectionPrice > span { font-size: .7em; letter-spacing: .04em; }
+.productInquiry { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; padding-bottom: 12px; border-bottom: 1px solid transparent; border-image: var(--divider) 1; color: var(--burgundy); font-size: clamp(15px, 1.05vw, 20px); font-weight: 500; line-height: 1.5; text-decoration: none; }
+.productInquiry:hover { text-decoration: underline; text-underline-offset: .3em; }
 .collectionPricing { max-width: 45ch; margin-top: clamp(48px, 4vw, 72px); color: rgb(43 22 15 / .7); font-size: 13px; line-height: 1.7; }
 
 /* 04 / Your order */
@@ -188,8 +186,8 @@
   .gestureTitle { font-size: clamp(48px, 5.1vw, 64px); }
   .gestureLayout { gap: 48px; }
   .collectionGrid { height: 960px; gap: 24px; }
-  .collectionProductInfo { right: 25px; bottom: 25px; left: 25px; font-size: 16px; }
-  .collectionProductInfo .collectionPrice { font-size: 20px; }
+  .collectionProductInfo { grid-template-columns: 1fr; gap: 8px; padding-top: 20px; }
+  .productInquiry { margin-top: 8px; }
   .quoteGrid { transform: scale(.6); transform-origin: top left; }
   .quoteFlower { top: 10%; left: 20%; width: 65%; height: auto; }
   .quote blockquote { left: 16%; width: 70%; }
@@ -241,10 +239,10 @@
   .collectionGrid[data-occasion="thank-you"] { grid-template-rows: 1.2fr 1fr 1.2fr; grid-template-areas: "a a" "b c" "d d"; }
   .collectionGrid[data-occasion="celebrate"] { grid-template-rows: 1.1fr 1.3fr 1fr; grid-template-areas: "a a" "b b" "c d"; }
   .collectionGrid[data-occasion="for-you"] { grid-template-rows: 1fr 1fr 1fr; grid-template-areas: "a b" "a b" "c d"; }
-  .collectionProductInfo { right: 17px; bottom: 22px; left: 17px; font-size: 13px; }
-  .collectionProductInfo .collectionPrice { font-size: 16px; }
-  .collectionCard .collectionProductInfo { right: 12px; left: 12px; gap: 8px; }
-  .productInquiry { right: 12px; left: 12px; font-size: 12px; }
+  .collectionProductInfo { grid-template-columns: 1fr; gap: 8px; padding-top: 20px; }
+  .productName { font-size: 13px; }
+  .collectionPrice { font-size: 16px; }
+  .productInquiry { gap: 8px; margin-top: 8px; font-size: 13px; }
   .collectionPricing { margin-top: 48px; font-size: 12px; }
   .gestureLink { margin-top: 56px; font-size: 16px; }
   .gesturePhoto { width: 100%; aspect-ratio: 1.1; margin-top: 88px; }
