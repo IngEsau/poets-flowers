@@ -9,7 +9,7 @@ export default function Hero({ locale }: { locale: Locale }) {
   const t = getDictionary(locale);
   return (
     <section className={styles.hero} aria-labelledby="hero-title" data-story-hero>
-      <Image src="/assets/hero.jpg" alt="" fill priority sizes="(min-width: 1920px) 1920px, 100vw" className={styles.heroImage} data-story-hero-image />
+      <Image src="/assets/hero.webp" alt="" fill priority sizes="(min-width: 1920px) 1920px, 100vw" className={styles.heroImage} data-story-hero-image />
       <LanguageSwitch locale={locale} label={t.language.label} />
       <div className={styles.heroContent}>
         <h1 id="hero-title" className={styles.heroTitle}>
