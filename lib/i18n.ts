@@ -62,7 +62,7 @@ const en = {
     loading: "Loading interactive paper.",
     unavailable: "Interactive paper unavailable. Showing the original image.",
   },
-  contact: { title: ["WHO’S", "IT FOR?"], channels: "Contact channels" },
+  contact: { title: ["WHO’S", "IT FOR?"], note: "Tell us who’s on your mind. That’s where the bouquet begins.", channels: "Contact channels" },
   footer: { navigation: "Footer navigation", home: "HOME", flowers: "FLOWERS", contact: "CONTACT", developmentCredit: "Developed by Buxdev" },
   actions: { label: "Quick actions", backToTop: "Back to top", whatsapp: "Talk to us on WhatsApp" },
 };
@@ -129,7 +129,7 @@ const es: Dictionary = {
     loading: "Cargando el papel interactivo.",
     unavailable: "El papel interactivo no está disponible. Se muestra la imagen original.",
   },
-  contact: { title: ["¿PARA", "QUIÉN?"], channels: "Medios de contacto" },
+  contact: { title: ["¿PARA", "QUIÉN?"], note: "Cuéntanos a quién tienes en mente. El ramo empieza ahí.", channels: "Medios de contacto" },
   footer: { navigation: "Navegación del pie de página", home: "INICIO", flowers: "FLORES", contact: "CONTACTO", developmentCredit: "Desarrollado por Buxdev" },
   actions: { label: "Acciones rápidas", backToTop: "Volver al inicio", whatsapp: "Escríbenos por WhatsApp" },
 };

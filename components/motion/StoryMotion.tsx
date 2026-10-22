@@ -153,6 +153,15 @@ function mountStory(root: HTMLElement, mobile: boolean, played: WeakSet<HTMLElem
       });
     }
 
+    if (mobile) {
+      const contact = root.querySelector<HTMLElement>("[data-story-contact]");
+      const photo = contact?.querySelector<HTMLElement>("[data-story-contact-photo]");
+      if (contact && photo) {
+        // The oversized photo covers both edges throughout the mobile parallax.
+        linked(photo, { translate: ["0px -32svh", "0px 32svh"] }, contact, { offset: ["start end", "end start"] });
+      }
+    }
+
     const steps = root.querySelector<HTMLElement>("[data-story-steps]");
     if (steps) {
       steps.querySelectorAll<HTMLElement>("[data-story-step]").forEach((step, index) => {

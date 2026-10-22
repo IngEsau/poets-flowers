@@ -38,7 +38,7 @@
     transform: none !important;
     scale: none !important;
   }
-  [data-story-parallax] { translate: none !important; }
+  [data-story-parallax], [data-story-contact-photo] { translate: none !important; }
   [data-story-product-photo], [data-story-arrow], [data-story-product-arrow] { transform: none !important; scale: none !important; transition: none !important; }
   [data-story-product] > a::after { transition-duration: 100ms; }
 }
