@@ -26,7 +26,6 @@ export default function Collection({ locale }: { locale: Locale }) {
         ),
       }))} />
       <p className={styles.collectionPricing}>{t.collection.pricing}</p>
-      <p className={styles.collectionStatement} data-story-reveal="soft"><em>{t.collection.statement}</em><br /><strong>{t.collection.feeling}</strong></p>
     </section>
   );
 }
