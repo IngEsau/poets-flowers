@@ -6,7 +6,7 @@ import styles from "@/app/page.module.css";
 type Panel = { id: string; label: string; content: ReactNode };
 const subscribe = () => () => {};
 
-export default function CollectionTabs({ panels }: { panels: Panel[] }) {
+export default function CollectionTabs({ panels, label }: { panels: Panel[]; label: string }) {
   const ready = useSyncExternalStore(subscribe, () => true, () => false);
   const [active, setActive] = useState(0);
   const links = useRef<Array<HTMLAnchorElement | null>>([]);
@@ -29,7 +29,7 @@ export default function CollectionTabs({ panels }: { panels: Panel[] }) {
 
   return (
     <div className={styles.collectionBrowser} data-tabs-ready={ready ? "" : undefined}>
-      <div className={styles.collectionCategories} role={ready ? "tablist" : "navigation"} aria-label="Flower occasions">
+      <div className={styles.collectionCategories} role={ready ? "tablist" : "navigation"} aria-label={label}>
         {panels.map((panel, index) => (
           <a key={panel.id} id={`${panel.id}-tab`} href={`#${panel.id}`} ref={(element) => { links.current[index] = element; }}
             role={ready ? "tab" : undefined} aria-controls={ready ? panel.id : undefined} aria-selected={ready ? index === active : undefined}

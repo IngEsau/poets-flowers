@@ -16,6 +16,7 @@ export type PaperCrumpleRelease = 'stay' | 'restore' | 'creased';
 export interface PaperCrumpleProps {
   src: string;
   alt?: string;
+  labels?: { controls: string; loading: string; unavailable: string };
   backSrc?: string;
   width?: number;
   height?: number;
@@ -306,6 +307,11 @@ function createPaperPath(
 const PaperCrumple = ({
   src,
   alt = 'Crumplable image',
+  labels = {
+    controls: 'Hold to crumple and drag. Keyboard: hold Space or Enter, arrow keys to move, Escape to reset.',
+    loading: 'Loading interactive paper.',
+    unavailable: 'Interactive paper unavailable. Showing the original image.'
+  },
   backSrc = '',
   width = 320,
   height = 400,
@@ -1244,16 +1250,16 @@ const PaperCrumple = ({
         type="button"
         className="paper-crumple-hit"
         disabled={disabled || status !== 'ready'}
-        aria-label={`${alt}. Hold to crumple and drag. Keyboard: hold Space or Enter, arrow keys to move, Escape to reset.`}
+        aria-label={`${alt} ${labels.controls}`}
         aria-pressed="false"
         style={{ visibility: status === 'ready' ? 'visible' : 'hidden' }}
       />
       <span className="paper-crumple-focus" aria-hidden="true" />
       <span className="paper-crumple-sr" role="status">
         {status === 'loading'
-          ? 'Loading interactive paper.'
+          ? labels.loading
           : status === 'error'
-            ? 'Interactive paper unavailable. Showing the original image.'
+            ? labels.unavailable
             : ''}
       </span>
     </div>

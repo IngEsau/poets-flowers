@@ -3,12 +3,13 @@
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import type { PaperCrumpleState } from "./paper-crumple/PaperCrumple";
+import type { Dictionary } from "@/lib/i18n";
 import styles from "@/app/page.module.css";
 
 const PaperCrumple = dynamic(() => import("./paper-crumple/PaperCrumple"), { ssr: false });
 type PaperImage = { src: string; width: number; height: number };
 
-export default function QuotePaper({ children }: { children: ReactNode }) {
+export default function QuotePaper({ children, alt, labels }: { children: ReactNode; alt: string; labels: Dictionary["quote"] }) {
   const sheetRef = useRef<HTMLDivElement>(null);
   const fontCSS = useRef<Promise<string> | null>(null);
   const [paper, setPaper] = useState<PaperImage | null>(null);
@@ -122,7 +123,8 @@ export default function QuotePaper({ children }: { children: ReactNode }) {
           className={styles.quoteCrumple}
           style={{ height: "100%" }}
           stageInset={0}
-          alt="Give flowers while they can still be felt. — J. Aguilar"
+          alt={alt}
+          labels={labels}
           releaseBehavior="restore"
           crumpleAmount={0.85}
           crumpleDuration={0.55}

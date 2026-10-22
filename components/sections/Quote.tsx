@@ -1,11 +1,14 @@
 import Image from "next/image";
+import { Fragment } from "react";
 import QuotePaper from "@/components/motion/QuotePaper";
+import { getDictionary, type Locale } from "@/lib/i18n";
 import styles from "@/app/page.module.css";
 
-export default function Quote() {
+export default function Quote({ locale }: { locale: Locale }) {
+  const t = getDictionary(locale).quote;
   return (
-    <section className={styles.quote} aria-label="A thought about giving flowers">
-      <QuotePaper>
+    <section className={styles.quote} id="quote" aria-label={t.label}>
+      <QuotePaper alt={`${t.lines.join(" ")} — J. Aguilar`} labels={t}>
         <div className={styles.quotePanel}>
           <div className={styles.quoteGrid} aria-hidden="true">
             <Image src="/assets/quote-grid-vertical-1.svg" alt="" width={368} height={1291} />
@@ -19,10 +22,13 @@ export default function Quote() {
           </div>
           <Image src="/assets/watercolor-quote.png" alt="" width={1122} height={1402} className={styles.quoteFlower} />
           <blockquote data-story-quote>
-            <p><span data-story-word>“Give</span>{" "}<span data-story-word>flowers</span>{" "}<span data-story-word>while</span>{" "}<span data-story-word>they</span>{" "}<span data-story-word>can</span><br className={styles.desktopBreak} />{" "}<span data-story-word>still</span>{" "}<span data-story-word>be</span>{" "}<span data-story-word>felt.”</span></p>
+            <p>{t.lines.map((line, lineIndex) => <Fragment key={lineIndex}>
+              {lineIndex > 0 && <><br className={styles.desktopBreak} />{" "}</>}
+              {line.split(" ").map((word, index) => <Fragment key={index}>{index > 0 && " "}<span data-story-word>{word}</span></Fragment>)}
+            </Fragment>)}</p>
             <footer data-story-author>— J. Aguilar</footer>
           </blockquote>
-          <p className={styles.quotePaperHint} aria-hidden="true">Hold to crumple · release to unfold</p>
+          <p className={styles.quotePaperHint} aria-hidden="true">{t.hint}</p>
         </div>
       </QuotePaper>
     </section>

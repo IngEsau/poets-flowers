@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpIcon, WhatsappLogoIcon } from "@/components/ui/icons";
 import { contact } from "@/lib/contact";
+import type { Dictionary } from "@/lib/i18n";
 import styles from "@/app/page.module.css";
 
-export default function FloatingActions() {
+export default function FloatingActions({ labels }: { labels: Dictionary["actions"] }) {
   const [visible, setVisible] = useState(false);
   const actions = useRef<HTMLElement>(null);
 
@@ -35,11 +36,11 @@ export default function FloatingActions() {
   }, []);
 
   return (
-    <nav ref={actions} className={styles.floatingActions} data-visible={visible} aria-label="Quick actions" inert={!visible} aria-hidden={!visible}>
-      <a className={styles.backToTop} href="#home" aria-label="Back to top" title="Back to top">
+    <nav ref={actions} className={styles.floatingActions} data-visible={visible} aria-label={labels.label} inert={!visible} aria-hidden={!visible}>
+      <a className={styles.backToTop} href="#home" aria-label={labels.backToTop} title={labels.backToTop}>
         <ArrowUpIcon size={26} aria-hidden="true" />
       </a>
-      <a className={styles.floatingWhatsapp} href={contact.whatsapp} target="_blank" rel="noopener noreferrer" aria-label={`WhatsApp: ${contact.phoneLabel}`} title="Talk to us on WhatsApp">
+      <a className={styles.floatingWhatsapp} href={contact.whatsapp} target="_blank" rel="noopener noreferrer" aria-label={`${labels.whatsapp}: ${contact.phoneLabel}`} title={labels.whatsapp}>
         <WhatsappLogoIcon size={34} aria-hidden="true" />
       </a>
     </nav>

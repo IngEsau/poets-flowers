@@ -17,6 +17,15 @@
 .heroLink:hover, .meaningLink:hover, .gestureLink:hover { text-decoration: underline; text-underline-offset: .2em; }
 .heroNumber { position: absolute; right: calc(230 * var(--u)); top: calc(762 * var(--u)); z-index: 1; color: #fff; font: 600 calc(32 * var(--u))/1.2 var(--font-inter), Arial, sans-serif; letter-spacing: 0; opacity: .72; }
 
+/* Language navigation stays outside the hero's moving typography. */
+.languageSwitch { display: inline-flex; align-items: center; gap: 2px; width: fit-content; padding: 3px; border: 1px solid rgb(244 235 221 / .3); border-radius: 24px; font: 500 12px/1 var(--font-inter), Arial, sans-serif; letter-spacing: .06em; }
+.languageSwitch[data-placement="hero"] { position: absolute; z-index: 3; top: clamp(24px, 3vw, 48px); right: var(--page-margin); }
+.languageSwitch a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 36px; border-radius: 20px; color: inherit; text-decoration: none; }
+.languageSwitch a[aria-current="page"] { background: var(--ivory); color: var(--burgundy); }
+.languageSwitch a:hover { background: rgb(244 235 221 / .15); }
+.languageSwitch a[aria-current="page"]:hover { background: var(--ivory); }
+.languageSwitch a:focus-visible { outline-width: 1px; outline-offset: 2px; }
+
 @media (min-width: 1101px) {
   .hero { height: max(calc(1080 * var(--u)), 100svh); }
   /* Keep the chapter marker 48px above the visible bottom, moving all copy together. */
@@ -165,6 +174,10 @@
 .footer nav { display: flex; justify-content: center; gap: calc(48 * var(--u)); margin-top: calc(40 * var(--u)); font-size: calc(32 * var(--u)); }
 .footer nav a, .footerEmail { text-decoration: none; }
 .footer nav a:hover, .footerEmail:hover { text-decoration: underline; text-underline-offset: .2em; }
+.footer .languageSwitch { gap: 2px; margin-top: 28px; border-color: rgb(147 0 40 / .2); font-size: 12px; }
+.footer .languageSwitch a[aria-current="page"] { background: var(--burgundy); color: var(--ivory); }
+.footer .languageSwitch a:hover { background: rgb(147 0 40 / .06); }
+.footer .languageSwitch a[aria-current="page"]:hover { background: var(--burgundy); }
 .footerEmail { display: inline-flex; align-items: center; gap: .4em; margin-top: calc(40 * var(--u)); color: var(--burgundy); font-size: calc(32 * var(--u)); }
 .footer small { margin-top: calc(40 * var(--u)); font-size: calc(32 * var(--u)); }
 
@@ -255,7 +268,7 @@
   .markerRule { flex: 1; width: auto; max-width: 120px; }
   .meaning, .collection, .gesture { padding: 62px 24px 78px; }
   .meaningTitle, .collectionTitle, .gestureTitle { margin-top: 45px !important; font-size: clamp(43px, 12.2vw, 65px); line-height: 1.06; }
-  .meaningTitle { white-space: nowrap; font-size: clamp(37px, 10.8vw, 55px); }
+  .meaningTitle { white-space: nowrap; font-size: clamp(30px, 10vw, 55px); }
   .meaningAccent { margin-top: 12px !important; margin-left: 33%; font-size: 23px; }
   .meaningCopy { width: 100%; margin-top: 45px; font-size: 18px; line-height: 1.4; }
   .desktopBreak { display: none; }
@@ -296,8 +309,8 @@
   .quote blockquote footer { margin-top: 50px; font-size: 22px; }
   .contact { display: flex; flex-direction: column; height: auto; }
   .contactPhoto { position: relative; top: auto; left: auto; width: 100%; height: 360px; }
-  .contactCopy { position: relative; top: auto; left: auto; padding: 55px 24px 70px; }
-  .contact h2 { font-size: clamp(58px, 15vw, 80px); line-height: 1.02; }
+  .contactCopy { position: relative; top: auto; left: auto; width: 100%; padding: 55px 24px 70px; }
+  .contact h2 { font-size: clamp(50px, 15vw, 80px); line-height: 1.02; }
   .contactCopy > p { margin-top: 25px; font-size: 19px; }
   .contactChannels { flex-wrap: wrap; gap: 25px; margin-top: 38px; font-size: 19px; }
   .whatsapp { width: 175px; min-height: 55px; }
