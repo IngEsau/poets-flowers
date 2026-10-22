@@ -264,9 +264,9 @@
   .quotePaperHint { bottom: 40px; font-size: 11px; }
   .contact { display: flex; flex-direction: column; gap: 0; padding: 0; }
   .contactPhoto { width: 100%; aspect-ratio: 1; }
-  .contactCopy { width: 100%; padding: 96px 24px 112px; }
+  .contactCopy { width: 100%; padding: 96px 24px 112px; text-align: center; }
   .contact h2 { font-size: clamp(64px, 17vw, 88px); }
-  .contactChannels { flex-direction: row; align-items: center; gap: 32px; margin-top: 64px; font-size: 18px; }
+  .contactChannels { flex-direction: row; align-items: center; justify-content: center; gap: 32px; margin-top: 64px; font-size: 18px; }
   .whatsapp { min-height: 60px; padding: 18px 28px; }
   .footer { padding: 128px 24px; }
   .footerContent { padding-top: 88px; }
